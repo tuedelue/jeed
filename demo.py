@@ -23,7 +23,7 @@ import seaborn as sns
 tsne = TSNE(n_components=2, verbose=1, perplexity=20, n_iter=500, random_state=42)
 # the fitting may take some time.
 tsne_results = pd.DataFrame(tsne.fit_transform(model.vectors), columns=['tsne-2d-one', 'tsne-2d-two'])
-# get the corresponding emohi groups in order
+# get the corresponding emoji groups in order
 emojis_groups = pd.read_json('jeed1488_emoji_groups.json.gz')
 tsne_results['group'] = [emojis_groups[emojis_groups['emoji'] == emoji]['group'].iloc[0] for emoji in model.vocab]
 
